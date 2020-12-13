@@ -9,14 +9,16 @@ export default createGlobalStyle`
   }
 
   body {
-    //color: #fff;
-    //background: #ebf2f5;
     color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.background};
+    //background: ${props => props.theme.colors.background};
   }
 
   body, input, button, text-area {
     font: 600 18px Nunito, sans-serif;
+  }
+
+  a {
+    cursor: pointer;
   }
 
 `;
