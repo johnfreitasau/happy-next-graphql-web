@@ -5,13 +5,13 @@ import {MapContainer, TileLayer} from 'react-leaflet';
 import dynamic from 'next/dynamic';
 
 import MapMarkerImg from '../assets/map-marker.svg';
-import {Container,StyledLink} from '../styles/pages/Map';
+import {Container,StyledLink} from '../styles/pages/OrphanagesMap';
 //import {Map} from '../components/map';
 
 
-const DynamicMap = dynamic(() => import('../components/map'))
+const DynamicMap = dynamic(() => import('../components/map'), {ssr: false})
 
-function OrphanageMap() {
+function OrphanagesMap() {
   return(
     <Container>
       <aside>
@@ -25,7 +25,7 @@ function OrphanageMap() {
           <strong>Sydney</strong>
           <span>NSW</span>
         </footer>
-        <Link href="" passHref>
+        <Link href="/" passHref>
           <StyledLink>
           <FiPlus />
           </StyledLink>
@@ -37,6 +37,6 @@ function OrphanageMap() {
 
 
 
-export default OrphanageMap;
+export default OrphanagesMap;
 
 

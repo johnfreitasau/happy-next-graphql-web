@@ -1,5 +1,5 @@
 {
-  "name": "learn-starter",
+  "name": "happy-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -36,5 +36,9 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/johnfreitasau/happy-web.git",
+  "author": "John Freitas <john.freitasau@gmail.com>",
+  "license": "MIT"
 }

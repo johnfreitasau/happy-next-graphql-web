@@ -41,9 +41,15 @@ export const Container = styled.div`
 
 
   }
+
+  div {
+    z-index: 5;
+  }
 `;
 
 export const StyledLink = styled.a`
+  z-index: 10;
+
   position: absolute;
   right: 40px;
   bottom: 40px;
