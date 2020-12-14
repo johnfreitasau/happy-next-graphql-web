@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {FiArrowRight} from 'react-icons/fi';
+
 import Logo from '../assets/logo.svg';
 
 import {Container, ContainerWrapper, Location, Link} from '../styles/pages/Home';
