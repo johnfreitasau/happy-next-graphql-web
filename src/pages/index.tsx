@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             <strong>Sydney</strong>
             <span>NSW</span>
           </Location>
-          <Link href='/map'>
+          <Link href='/orphanagesMap'>
             <FiArrowRight size={26} color="rgba(0,0,0,0.6)"/>
           </Link>
         </ContainerWrapper>

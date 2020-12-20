@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {FiPlus}from 'react-icons/fi';
-import {MapContainer, TileLayer} from 'react-leaflet';
+import {MapContainer, TileLayer, Marker} from 'react-leaflet';
 import dynamic from 'next/dynamic';
 
 import MapMarkerImg from '../assets/map-marker.svg';
