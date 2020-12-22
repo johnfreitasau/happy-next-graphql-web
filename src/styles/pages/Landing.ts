@@ -23,7 +23,7 @@ export const ContainerWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
-  background: url('../landing.svg') no-repeat 95% center;
+  background-image: url('/assets/landing.svg') no-repeat 95% center;
 
   main {
     h1 {

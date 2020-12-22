@@ -4,6 +4,8 @@ import Leaflet from 'leaflet';
 
 // import {LeafletContainerStyle} from '../styles/pages/components/map';
 import 'leaflet/dist/leaflet.css';
+import Link from 'next/link';
+import { FiArrowRight, FiPlus } from 'react-icons/fi';
 
 interface mapProps {
 
@@ -31,9 +33,17 @@ const Map: React.FC<mapProps> = ({}) => {
               closeButton={false}
               minWidth={240}
               maxWidth={240}
+              className="map-popup"
             >
 
               Lar das
+              <Link href="/orphanages/1" passHref>
+                <div>
+                  <FiArrowRight size={20} color="#fff"/>
+                </div>
+              </Link>
+
+
             </Popup>
           </Marker>
 
