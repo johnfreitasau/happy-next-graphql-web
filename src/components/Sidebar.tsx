@@ -11,7 +11,6 @@ export default function Sidebar() {
 
   return (
     <AsideContainer>
-    <aside className="sidebar">
       <img src="/assets/map-marker.svg" alt="Happy" />
 
       <footer>
@@ -19,7 +18,6 @@ export default function Sidebar() {
           <FiArrowLeft size={24} color="#FFF" />
         </div>
       </footer>
-    </aside>
     </AsideContainer>
   );
 

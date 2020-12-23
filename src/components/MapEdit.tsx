@@ -17,7 +17,7 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29,68]
 })
 
-const Map: React.FC<mapProps> = ({}) => {
+const MapEdit: React.FC<mapProps> = ({}) => {
     return (
         <MapContainer
           center={[-33.71606747297306, 150.97515317055928]}
@@ -55,4 +55,4 @@ const Map: React.FC<mapProps> = ({}) => {
     );
 }
 
-export default Map;
+export default MapEdit;

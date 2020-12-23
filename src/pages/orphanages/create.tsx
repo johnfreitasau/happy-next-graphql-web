@@ -149,6 +149,9 @@ import {useEffect, useState} from 'react';
 import Link from 'next/link';
 import {GetServerSideProps, GetStaticProps} from 'next';
 import Sidebar from '../../components/Sidebar';
+import {FiPlus} from 'react-icons/fi';
+import {Container, Main} from '../../styles/pages/orphanages/CreateOrphanage';
+import dynamic from 'next/dynamic';
 
 const preventDefault = (f: any) => (e: any) => {
   e.preventDefault()
@@ -159,6 +162,8 @@ interface CreateOrphanageProps {
   // create: Document[];
 }
 
+const DynamicMap = dynamic(() => import('../../components/MapEdit'), {ssr: false})
+
 export default function CreateOrphanages({}: CreateOrphanageProps) {
 
   const handleSubmit = preventDefault(() => {
@@ -166,13 +171,17 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
   })
 
   return (
-    <div id="page-create-orphanage">
+    <Container>
+    {/* <div id="page-create-orphanage"> */}
       <Sidebar />
 
-      <main>
+      <Main>
+      {/* <main> */}
         <form onSubmit={handleSubmit} className="create-orphanage-form">
           <fieldset>
-            <legend>Dados</legend>
+            <legend>Orphanage form</legend>
+
+            <DynamicMap />
 
             {/* <Map
               center={[-4.3032032,-38.9981043]}
@@ -189,7 +198,7 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
             </Map> */}
 
             <div className="input-block">
-              <label htmlFor="name">Nome</label>
+              <label htmlFor="name">Name</label>
               <input id="name"
                 // value={name}
                 // onChange={(e) => setName(e.target.value)}
@@ -197,7 +206,7 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
             </div>
 
             <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
+              <label htmlFor="about">About <span>Max of 300 caracteres</span></label>
               <textarea id="name"
                 maxLength={300}
                 // value={about}
@@ -208,19 +217,19 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
 
-              {/**<div className="uploaded-image">
+              <div className="uploaded-image">
               </div>
               <button className="new-image">
                 <FiPlus size={24} color="#15b6d6" />
-              </button>*/}
+              </button>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend>Visitação</legend>
+            <legend>Visitation</legend>
 
             <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
+              <label htmlFor="instructions">Instructions</label>
               <textarea id="instructions"
                 // value={instructions}
                 // onChange={(e) => setInstructions(e.target.value)}
@@ -228,7 +237,7 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Horarios abertos</label>
+              <label htmlFor="opening_hours">Opening Hours</label>
               <input id="opening_hours"
                 // value={opening_hours}
                 // onChange={(e) => setOpeningHours(e.target.value)}
@@ -236,25 +245,29 @@ export default function CreateOrphanages({}: CreateOrphanageProps) {
             </div>
 
             <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
+              <label htmlFor="open_on_weekends">Opened on Weekends</label>
 
               <div className="button-select">
                 <button type="button"
                   // className={open_on_weekends ? "active" : ""}
                   // onClick={() => setOpenOnWeekends(true)}
-                >Sim</button>
+                >Yes</button>
                 <button type="button"
                   // className={open_on_weekends ? "active" : ""}
                   // onClick={() => setOpenOnWeekends(false)}
-                >Não</button>
+                >No</button>
               </div>
             </div>
           </fieldset>
 
-          {/* <PrimaryButton type="submit">Confirmar</PrimaryButton> */}
+          <button className="confirm-button" type="submit">
+            Submit
+          </button>
         </form>
-      </main>
-    </div>
+      {/* </main> */}
+      </Main>
+    {/* </div> */}
+    </Container>
   );
 }
 
