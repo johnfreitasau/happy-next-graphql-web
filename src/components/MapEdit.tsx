@@ -22,7 +22,7 @@ const MapEdit: React.FC<mapProps> = ({}) => {
         <MapContainer
           center={[-33.71606747297306, 150.97515317055928]}
           zoom={31}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '100%', height: 280 }}
         >
 
           <Marker

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
@@ -6,10 +6,31 @@ import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
+import { useMutation } from 'urql';
+import { useOrphanagesQuery } from '../generated/graphql';
 
 interface mapProps {
 
 }
+
+interface orphanagesProps {
+
+}
+
+// const REGISTER_MUT = `
+// query {
+//   orphanages{
+//     id,,
+//     name,
+//     latitude,
+//     longitude,
+//     about,
+//     instructions,
+//     openingHours,
+//     openOnWeekends
+//   }
+// }
+// `;
 
 const mapIcon = Leaflet.icon({
   iconUrl: '/assets/map-marker.svg',
@@ -18,7 +39,26 @@ const mapIcon = Leaflet.icon({
 })
 
 const Map: React.FC<mapProps> = ({}) => {
+
+    const [,orphanages] = useOrphanagesQuery();
+
+
+// async function handleOnClick() {
+//   const response = await orphanages();
+//   response.data?.orphanages;
+// }
+
+  // async function car {
+  //   const response = await orphanages();
+  //   response.;
+  //   if (response.data)
+  //   console.log(orphanages);
+  // }
+
+
     return (
+
+
         <MapContainer
           center={[-33.71606747297306, 150.97515317055928]}
           zoom={31}
@@ -43,7 +83,6 @@ const Map: React.FC<mapProps> = ({}) => {
                 </div>
               </Link>
 
-
             </Popup>
           </Marker>
 
@@ -51,6 +90,7 @@ const Map: React.FC<mapProps> = ({}) => {
           {/* Option 1 <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
           <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`}/>
         </MapContainer>
+
 
     );
 }

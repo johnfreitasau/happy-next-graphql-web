@@ -104,7 +104,7 @@ export default function Orphanage({ orphanage }: OrphanageProps) {
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}
                 >
-                  Ver rotas no Google Maps
+                  See the route in Google Maps
                 </a>
               </footer>
             </div>
@@ -135,7 +135,7 @@ export default function Orphanage({ orphanage }: OrphanageProps) {
             </div>
             <button type="button" className="contact-button">
               <FaWhatsapp size={20} color="#FFF" />
-              Entrar em contato
+              Get in touch
             </button>
             {/* </div> */}
             {/* </div> */}

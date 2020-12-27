@@ -6,13 +6,17 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image'
 
 import {Container,StyledLink} from '../styles/pages/OrphanagesMap';
+import { useMutation } from 'urql';
 //import {Map} from '../components/map';
+
 
 
 const DynamicMap = dynamic(() => import('../components/Map'), {ssr: false})
 
 function OrphanagesMap() {
+
   return(
+
     <Container>
       <aside>
         <header>
