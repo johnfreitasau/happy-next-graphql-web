@@ -13,13 +13,14 @@
     "@chakra-ui/react": "^1.0.4",
     "@emotion/core": "^11.0.0",
     "@emotion/native": "^11.0.0-next.19",
-    "@emotion/react": "^11.0.0-next.10",
+    "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@types/node": "^14.14.12",
     "@types/react": "^17.0.0",
     "@types/react-leaflet": "^2.5.2",
     "@urql/exchange-graphcache": "^3.3.3",
     "babel-plugin-inline-react-svg": "^1.1.2",
+    "emotion-theming": "10.0.27",
     "formik": "^2.2.6",
     "framer-motion": "^3.1.1",
     "graphql": "^15.4.0",
@@ -32,7 +33,8 @@
     "react-icons": "^4.1.0",
     "react-leaflet": "^3.0.4",
     "styled-components": "^5.2.1",
-    "urql": "^1.11.4"
+    "urql": "^1.11.4",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.20.0",

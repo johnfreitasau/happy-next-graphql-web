@@ -28,7 +28,8 @@ const TextArea: React.ForwardRefRenderFunction<HTMLTextAreaElement, TextAreaProp
 
   return (
     <FormControl my={4} isInvalid={!!error}>
-      <FormLabel color={labelColor[colorMode]} htmlFor={name}>
+      <FormLabel htmlFor={name}>
+      {/* <FormLabel color={labelColor[colorMode]} htmlFor={name}> */}
         {label}
       </FormLabel>
 
