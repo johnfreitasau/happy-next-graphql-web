@@ -206,6 +206,8 @@ import dynamic from 'next/dynamic';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useCreateOrphanageMutation } from '../../generated/graphql';
+import { InputField } from '../../components/InputField';
+import Switch from '../../components/Switch';
 
 const preventDefault = (f: any) => (e: any) => {
   e.preventDefault()
@@ -220,9 +222,13 @@ const DynamicMap = dynamic(() => import('../../components/MapEdit'), {ssr: false
 
 // export default function CreateOrphanages({}: CreateOrphanageProps) {
 const CreateOrphanages: React.FC = () => {
+const [checkboxValue, setCheckboxValue] = useState(false);
 
 const [,orphanages] = useCreateOrphanageMutation();
 
+  const handleOpenOnWeekendsToggle = useCallback((checkboxValue) => {
+    setCheckboxValue(!checkboxValue)
+  }, []);
 
   // const handleSubmit = useCallback(async (e) => {
   //   e.preventdefault();
@@ -265,37 +271,42 @@ const [,orphanages] = useCreateOrphanageMutation();
               openingHours: "",
               openOnWeekends: false,
             }}
+
             onSubmit={async (values) => {
                 const response = await orphanages({options: values});
+
+                console.log('It is on onSubmit')
 
                 if(response.data?.createOrphanage) {
                   console.log(response.data.createOrphanage)
                   response.data.createOrphanage
                 }
                 console.log(values)}}
-            validationSchema={Yup.object().shape({
-                name: Yup.string()
-                    .min(3)
-                    .max(50)
-                    .required(),
-                latitude: Yup.number()
-                    .required(),
-                longitude: Yup.number()
-                    .required(),
-                about: Yup.string()
-                    .min(3)
-                    .required(),
-                instructions: Yup.string()
-                    .min(3)
-                    .required(),
-                openingHours: Yup.string()
-                    .min(3)
-                    .required(),
-                openOnWeekends: Yup.boolean()
-                    .required()
-            })}
+            // validationSchema={Yup.object().shape({
+            //     name: Yup.string()
+            //         .min(3)
+            //         .max(50)
+            //         .required(),
+            //     // latitude: Yup.number()
+            //     //     .required(),
+            //     // longitude: Yup.number()
+            //     //     .required(),
+            //     about: Yup.string()
+            //         .min(3)
+            //         .required(),
+            //     instructions: Yup.string()
+            //         .min(3)
+            //         .required(),
+            //     // openingHours: Yup.string()
+            //     //     .min(3)
+            //     //     .required(),
+            //     // openOnWeekends: Yup.bool().oneOf([true], 'OpenOnWeekends is true if required').required(),
+            //     //     .required()
+            // })}
+
+
         >
-        <form className="create-orphanage-form">
+        <Form className="create-orphanage-form">
           <fieldset>
             <legend>Orphanage form</legend>
 
@@ -316,20 +327,26 @@ const [,orphanages] = useCreateOrphanageMutation();
             </Map> */}
 
             <div className="input-block">
-              <label htmlFor="name">Name</label>
-              <input id="name"
-                // value={name}
-                // onChange={(e) => setName(e.target.value)}
+              <Field
+                  name="name"
+                  label="Name"
+                  component={InputField}
               />
             </div>
 
             <div className="input-block">
-              <label htmlFor="about">About <span>Max of 300 caracteres</span></label>
-              <textarea id="name"
+              <Field
+                  name="about"
+                  label="About (Max of 300 caracteres)"
+                  textarea={true}
+                  component={InputField}
+                  maxLength={300}
+              />
+              {/* <textarea id="name"
                 maxLength={300}
                 // value={about}
                 // onChange={(e) => setAbout(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div className="input-block">
@@ -347,24 +364,40 @@ const [,orphanages] = useCreateOrphanageMutation();
             <legend>Visitation</legend>
 
             <div className="input-block">
-              <label htmlFor="instructions">Instructions</label>
+              {/* <label htmlFor="instructions">Instructions</label>
               <textarea id="instructions"
                 // value={instructions}
                 // onChange={(e) => setInstructions(e.target.value)}
+              /> */}
+              <Field
+                  name="instructions"
+                  label="Instructions"
+                  textarea={true}
+                  component={InputField}
               />
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Opening Hours</label>
-              <input id="opening_hours"
-                // value={opening_hours}
-                // onChange={(e) => setOpeningHours(e.target.value)}
+              <Field
+                  name="openingHours"
+                  label="Opening Hours"
+                  component={InputField}
               />
             </div>
 
             <div className="input-block">
-              <label htmlFor="open_on_weekends">Opened on Weekends</label>
+              {/* <label htmlFor="Open on the Weekends">Opened on Weekends</label> */}
+              <Field
+                  component={Switch}
+                  name="OpenOnWeekends"
+                  id="OpenOnWeekends"
+                  label="Open On Weekends"
 
+                  isOn={checkboxValue}
+                  handleToggle={() => setCheckboxValue(!checkboxValue)}
+                  // onChange={() => handleOpenOnWeekendsToggle(!checkboxValue)}
+              />
+{/*
               <div className="button-select">
                 <button type="button"
                   // className={open_on_weekends ? "active" : ""}
@@ -374,21 +407,33 @@ const [,orphanages] = useCreateOrphanageMutation();
                   // className={open_on_weekends ? "active" : ""}
                   // onClick={() => setOpenOnWeekends(false)}
                 >No</button>
-              </div>
+              </div> */}
+
+{/*
+              <Switch
+                isOn={value}
+                onColor="#EF476F"
+                handleToggle={() => setValue(!value)}
+              /> */}
+
+
             </div>
           </fieldset>
 
           <button className="confirm-button" type="submit">
             Submit
           </button>
-        </form>
+        </Form>
         </Formik>
       {/* </main> */}
       </Main>
     {/* </div> */}
     </Container>
-  );
+
+    );
+
 }
+
 
 export const getStaticProps: GetStaticProps<CreateOrphanageProps> = async () => {
   //const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recommended`);
