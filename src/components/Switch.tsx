@@ -51,22 +51,18 @@ interface SwitchProps {
 
 export const Switch: React.FC<FieldProps & SwitchProps> = ({ label, isOn, handleToggle, onColor , field, ...props}) => {
 
-  console.log('isOn:',isOn)
-  //console.log('handleToggle:',handleToggle)
-  console.log('onColor:',onColor)
-
   return (
     <>
     <label htmlFor={label}>{label}</label>
     <SwitchContainer>
       <input
-        {...field}
-        checked={isOn}
-        onChange={handleToggle}
+
+        // checked={isOn}
+        // onChange={handleToggle}
         className="react-switch-checkbox"
         id={`react-switch`}
         type="checkbox"
-
+        {...field}
 
 
       />

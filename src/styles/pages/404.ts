@@ -20,20 +20,17 @@ export const ContainerWrapper = styled.div`
   max-height: 680px;
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  //justify-content: space-between;
-  background-image: url('/assets/landing.svg') no-repeat 95% center;
-
-  main {
 
     h1 {
     max-width: 350px;
     font-size: 76px;
     font-weight: 900;
     line-height: 70px;
-    /* margin-top: 50px;
-    margin-left: 50px; */
+    margin-top: 50px;
+    margin-left: 50px;
     }
 
     p {
@@ -42,12 +39,11 @@ export const ContainerWrapper = styled.div`
       line-height: 34px;
     }
 
-  }
 `;
 
 export const Link = styled.a`
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 0;
 
   width: 80px;

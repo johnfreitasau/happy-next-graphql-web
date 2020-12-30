@@ -14,6 +14,8 @@ import Sidebar from '../../components/Sidebar'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FiInfo, FiClock } from 'react-icons/fi'
 import dynamic from 'next/dynamic';
+import { useOrphanagesQuery } from '../../generated/graphql'
+
 interface OrphanageProps {
   orphanage: string
 }
@@ -28,6 +30,12 @@ interface OrphanageProps {
 const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
 
 export default function Orphanage({ orphanage }: OrphanageProps) {
+
+  const [data,fetching] = useOrphanagesQuery();
+
+  console.log('Data:',data);
+  console.log('Fetching:',fetching);
+
   const router = useRouter()
 
   if (router.isFallback) {
@@ -35,7 +43,6 @@ export default function Orphanage({ orphanage }: OrphanageProps) {
   }
 
   // console.log('PRODUCT:',product.data);
-  console.log(orphanage)
 
   // return (
   //   <div>

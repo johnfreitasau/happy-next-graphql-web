@@ -1,0 +1,24 @@
+query orphanages {
+  orphanages{
+    id,
+    name,
+    latitude,
+    longitude,
+    about,
+    instructions,
+    openingHours,
+    openOnWeekends
+  }
+}
+
+query findOrphanageById($id: String!) {
+  findOrphanageById(id: $id) {
+    name
+  }
+}
+
+query findOrphanageByName($name: String!) {
+  findOrphanageByName(name: $name) {
+    name
+  }
+}

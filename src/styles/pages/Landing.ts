@@ -8,6 +8,18 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background: ${props => props.theme.colors.background};
+
+  z-index:-1;
+
+  .background {
+    position: fixed;
+    opacity: 0.7;
+    overflow: hidden;
+    margin-left: 300px;
+
+    z-index: 0;
+
+  }
 `;
 
 export const ContainerWrapper = styled.div`
@@ -23,7 +35,8 @@ export const ContainerWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url('/assets/landing.svg') no-repeat 95% center;
+  /* background-image: url('/landing.svg') no-repeat 95% center; */
+
 
   main {
     h1 {

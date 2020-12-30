@@ -15,10 +15,10 @@ export default function NotFound() {
         <title>Happy</title>
       </Head>
       <img src="/assets/logo.svg" alt="Logo"/>
-      <main>
-        <h1>404</h1>
+      {/* <main> */}
+        <h1>404 :(</h1>
         <p>This is not the web page you are looking for.</p>
-      </main>
+      {/* </main> */}
       <Link href='/orphanagesMap'>
         <FiArrowLeft size={26} color="rgba(0,0,0,0.6)"/>
       </Link>

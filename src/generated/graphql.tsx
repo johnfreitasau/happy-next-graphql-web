@@ -19,12 +19,18 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   orphanages: Array<Orphanages>;
-  findOrphanage: Array<Orphanages>;
+  findOrphanageByName?: Maybe<Orphanages>;
+  findOrphanageById?: Maybe<Orphanages>;
 };
 
 
-export type QueryFindOrphanageArgs = {
+export type QueryFindOrphanageByNameArgs = {
   name: Scalars['String'];
+};
+
+
+export type QueryFindOrphanageByIdArgs = {
+  id: Scalars['String'];
 };
 
 export type Orphanages = {
@@ -85,17 +91,6 @@ export type OrphanageUpdateInput = {
   openOnWeekends?: Maybe<Scalars['Boolean']>;
 };
 
-export type OrphanagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type OrphanagesQuery = (
-  { __typename?: 'Query' }
-  & { orphanages: Array<(
-    { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
-  )> }
-);
-
 export type CreateOrphanageMutationVariables = Exact<{
   options: OrphanageInsertInput;
 }>;
@@ -109,7 +104,62 @@ export type CreateOrphanageMutation = (
   ) }
 );
 
+export type OrphanagesQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type OrphanagesQuery = (
+  { __typename?: 'Query' }
+  & { orphanages: Array<(
+    { __typename?: 'Orphanages' }
+    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
+  )> }
+);
+
+export type FindOrphanageByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type FindOrphanageByIdQuery = (
+  { __typename?: 'Query' }
+  & { findOrphanageById?: Maybe<(
+    { __typename?: 'Orphanages' }
+    & Pick<Orphanages, 'name'>
+  )> }
+);
+
+export type FindOrphanageByNameQueryVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type FindOrphanageByNameQuery = (
+  { __typename?: 'Query' }
+  & { findOrphanageByName?: Maybe<(
+    { __typename?: 'Orphanages' }
+    & Pick<Orphanages, 'name'>
+  )> }
+);
+
+
+export const CreateOrphanageDocument = gql`
+    mutation CreateOrphanage($options: OrphanageInsertInput!) {
+  createOrphanage(options: $options) {
+    id
+    name
+    latitude
+    longitude
+    about
+    instructions
+    openingHours
+    openOnWeekends
+  }
+}
+    `;
+
+export function useCreateOrphanageMutation() {
+  return Urql.useMutation<CreateOrphanageMutation, CreateOrphanageMutationVariables>(CreateOrphanageDocument);
+};
 export const OrphanagesDocument = gql`
     query orphanages {
   orphanages {
@@ -128,21 +178,25 @@ export const OrphanagesDocument = gql`
 export function useOrphanagesQuery(options: Omit<Urql.UseQueryArgs<OrphanagesQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<OrphanagesQuery>({ query: OrphanagesDocument, ...options });
 };
-export const CreateOrphanageDocument = gql`
-    mutation CreateOrphanage($options: OrphanageInsertInput!) {
-  createOrphanage(options: $options) {
-    id
+export const FindOrphanageByIdDocument = gql`
+    query findOrphanageById($id: String!) {
+  findOrphanageById(id: $id) {
     name
-    latitude
-    longitude
-    about
-    instructions
-    openingHours
-    openOnWeekends
   }
 }
     `;
 
-export function useCreateOrphanageMutation() {
-  return Urql.useMutation<CreateOrphanageMutation, CreateOrphanageMutationVariables>(CreateOrphanageDocument);
+export function useFindOrphanageByIdQuery(options: Omit<Urql.UseQueryArgs<FindOrphanageByIdQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<FindOrphanageByIdQuery>({ query: FindOrphanageByIdDocument, ...options });
+};
+export const FindOrphanageByNameDocument = gql`
+    query findOrphanageByName($name: String!) {
+  findOrphanageByName(name: $name) {
+    name
+  }
+}
+    `;
+
+export function useFindOrphanageByNameQuery(options: Omit<Urql.UseQueryArgs<FindOrphanageByNameQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<FindOrphanageByNameQuery>({ query: FindOrphanageByNameDocument, ...options });
 };

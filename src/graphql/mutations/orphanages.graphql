@@ -1,16 +1,3 @@
-query orphanages {
-  orphanages{
-    id,
-    name,
-    latitude,
-    longitude,
-    about,
-    instructions,
-    openingHours,
-    openOnWeekends
-  }
-}
-
 mutation CreateOrphanage($options: OrphanageInsertInput!) {
   createOrphanage(options: $options) {
     id,
