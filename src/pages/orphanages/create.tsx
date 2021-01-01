@@ -118,7 +118,7 @@ const [orphanages] = useCreateOrphanageMutation();
           <fieldset>
             <legend>Orphanage form</legend>
 
-            <DynamicMap />
+            <DynamicMap latitude={-33.8645508} longitude={151.2059748} />
 
             {/* <Map
               center={[-4.3032032,-38.9981043]}

@@ -6,7 +6,6 @@ import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
-import { useMutation } from 'urql';
 import { useOrphanagesQuery } from '../generated/graphql';
 import { withApollo } from '../utils/withApollo';
 

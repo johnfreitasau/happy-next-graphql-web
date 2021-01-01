@@ -123,7 +123,7 @@ export type FindOrphanageByIdQuery = (
   { __typename?: 'Query' }
   & { findOrphanageById?: Maybe<(
     { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'name'>
+    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
 );
 
@@ -136,7 +136,7 @@ export type FindOrphanageByNameQuery = (
   { __typename?: 'Query' }
   & { findOrphanageByName?: Maybe<(
     { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'name'>
+    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
 );
 
@@ -222,7 +222,14 @@ export type OrphanagesQueryResult = Apollo.QueryResult<OrphanagesQuery, Orphanag
 export const FindOrphanageByIdDocument = gql`
     query findOrphanageById($id: String!) {
   findOrphanageById(id: $id) {
+    id
     name
+    latitude
+    longitude
+    about
+    instructions
+    openingHours
+    openOnWeekends
   }
 }
     `;
@@ -255,7 +262,14 @@ export type FindOrphanageByIdQueryResult = Apollo.QueryResult<FindOrphanageByIdQ
 export const FindOrphanageByNameDocument = gql`
     query findOrphanageByName($name: String!) {
   findOrphanageByName(name: $name) {
+    id
     name
+    latitude
+    longitude
+    about
+    instructions
+    openingHours
+    openOnWeekends
   }
 }
     `;

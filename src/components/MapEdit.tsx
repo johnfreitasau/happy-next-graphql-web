@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import Leaflet from 'leaflet';
+import Leaflet, { LeafletMouseEvent } from 'leaflet';
 
 // import {LeafletContainerStyle} from '../styles/pages/components/map';
 import 'leaflet/dist/leaflet.css';
@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
 
 interface mapProps {
-
+  latitude: number;
+  longitude: number;
 }
 
 const mapIcon = Leaflet.icon({
@@ -17,24 +18,48 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29,68]
 })
 
-const MapEdit: React.FC<mapProps> = ({}) => {
+const MapEdit: React.FC<mapProps> = ({latitude, longitude}) => {
+
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
+
+  const handleMapClick = (event: LeafletMouseEvent): void => {
+    const { lat, lng } = event.latlng;
+
+    setPosition({
+      latitude: lat,
+      longitude: lng,
+    });
+  };
+
     return (
         <MapContainer
-          center={[-33.71606747297306, 150.97515317055928]}
-          zoom={31}
+          // center={[-33.71606747297306, 150.97515317055928]}
+          // zoom={31}
+          // style={{ width: '100%', height: 280 }}
+          center={[latitude, longitude]}
+          zoom={15}
           style={{ width: '100%', height: 280 }}
+          onClick={handleMapClick}
+
+
+          // dragging={true}
+          // touchZoom={false}
+          // zoomControl={false}
+          // scrollWheelZoom={false}
+          // doubleClickZoom={false}
         >
 
           <Marker
+            interactive={false}
             icon={mapIcon}
-            position={[-33.71606747297306, 150.97515317055928]}
-          >
-            <Popup
+            position={[latitude, longitude]}
+          />
+            {/* <Popup
               closeButton={false}
               minWidth={240}
               maxWidth={240}
               className="map-popup"
-            >
+            > */}
 
               Lar das
               <Link href="/orphanages/1" passHref>
@@ -44,8 +69,8 @@ const MapEdit: React.FC<mapProps> = ({}) => {
               </Link>
 
 
-            </Popup>
-          </Marker>
+            {/* </Popup> */}
+          {/* </Marker> */}
 
 
           {/* Option 1 <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}

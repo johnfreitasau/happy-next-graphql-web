@@ -13,12 +13,26 @@ query orphanages {
 
 query findOrphanageById($id: String!) {
   findOrphanageById(id: $id) {
-    name
+    id,
+    name,
+    latitude,
+    longitude,
+    about,
+    instructions,
+    openingHours,
+    openOnWeekends
   }
 }
 
 query findOrphanageByName($name: String!) {
   findOrphanageByName(name: $name) {
-    name
+    id,
+    name,
+    latitude,
+    longitude,
+    about,
+    instructions,
+    openingHours,
+    openOnWeekends
   }
 }
