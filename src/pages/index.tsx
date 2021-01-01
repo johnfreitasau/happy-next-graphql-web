@@ -3,8 +3,10 @@ import Head from 'next/head';
 import {FiArrowRight} from 'react-icons/fi';
 import Image from 'next/image';
 // import Logo from '../assets/logo.svg';
+//import { withApollo } from "../utils/withApollo";
 
 import {Container, ContainerWrapper, Location, Link} from '../styles/pages/Landing';
+import { withApollo } from '../utils/withApollo';
 
 const Home: React.FC = () => {
   return (
@@ -56,4 +58,5 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home;
+// export default Home;
+export default withApollo({ ssr: false })(Home);

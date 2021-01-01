@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
 import { useMutation } from 'urql';
 import { useOrphanagesQuery } from '../generated/graphql';
+import { withApollo } from '../utils/withApollo';
 
 interface mapProps {
 
@@ -40,7 +41,7 @@ const mapIcon = Leaflet.icon({
 
 const Map: React.FC<mapProps> = ({}) => {
 
-    const [,orphanages] = useOrphanagesQuery();
+    const orphanages = useOrphanagesQuery();
 
 
 // async function handleOnClick() {
@@ -95,4 +96,5 @@ const Map: React.FC<mapProps> = ({}) => {
     );
 }
 
-export default Map;
+export default withApollo({ ssr: true })(Map);
+//export default Map;

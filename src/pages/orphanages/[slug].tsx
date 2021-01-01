@@ -15,6 +15,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { FiInfo, FiClock } from 'react-icons/fi'
 import dynamic from 'next/dynamic';
 import { useOrphanagesQuery } from '../../generated/graphql'
+import { withApollo } from '../../utils/withApollo'
 
 interface OrphanageProps {
   orphanage: string
@@ -29,12 +30,13 @@ interface OrphanageProps {
 
 const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
 
-export default function Orphanage({ orphanage }: OrphanageProps) {
+//export default function Orphanage({ orphanage }: OrphanageProps) {
+function Orphanage({ orphanage }: OrphanageProps) {
 
-  const [data,fetching] = useOrphanagesQuery();
+  const {data,loading} = useOrphanagesQuery();
 
   console.log('Data:',data);
-  console.log('Fetching:',fetching);
+  console.log('Fetching:',loading);
 
   const router = useRouter()
 
@@ -179,3 +181,5 @@ export const getStaticProps: GetStaticProps<OrphanageProps> = async (
     revalidate: 60
   }
 }
+
+export default withApollo({ ssr: false })(Orphanage);

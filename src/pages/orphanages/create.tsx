@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import { useCreateOrphanageMutation } from '../../generated/graphql';
 import { InputField } from '../../components/InputField';
 import Switch from '../../components/Switch';
+import { withApollo } from '../../utils/withApollo';
 
 const preventDefault = (f: any) => (e: any) => {
   e.preventDefault()
@@ -26,7 +27,7 @@ const DynamicMap = dynamic(() => import('../../components/MapEdit'), {ssr: false
 const CreateOrphanages: React.FC = () => {
 const [checkboxValue, setCheckboxValue] = useState(false);
 
-const [,orphanages] = useCreateOrphanageMutation();
+const [orphanages] = useCreateOrphanageMutation();
 
   const handleOpenOnWeekendsToggle = useCallback((checkboxValue) => {
     setCheckboxValue(!checkboxValue)
@@ -76,7 +77,7 @@ const [,orphanages] = useCreateOrphanageMutation();
             }}
 
             onSubmit={async (values) => {
-                const response = await orphanages({options: values});
+                const response = await orphanages({variables: {options: values}});
 
                 console.log('It is on onSubmit')
 
@@ -250,4 +251,6 @@ export const getStaticProps: GetStaticProps<CreateOrphanageProps> = async () => 
     }
   }
 }
-export default CreateOrphanages;
+
+export default withApollo({ ssr: false })(CreateOrphanages);
+//export default CreateOrphanages;

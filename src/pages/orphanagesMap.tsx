@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image'
 
 import {Container,StyledLink} from '../styles/pages/OrphanagesMap';
-import { useMutation } from 'urql';
+import { withApollo } from '../utils/withApollo';
 //import {Map} from '../components/map';
 
 
@@ -44,8 +44,7 @@ function OrphanagesMap() {
     </Container>
   )};
 
-
-
-export default OrphanagesMap;
+// export default OrphanagesMap;
+export default withApollo({ ssr: true })(OrphanagesMap);
 
 

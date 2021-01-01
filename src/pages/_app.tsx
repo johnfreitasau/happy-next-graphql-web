@@ -7,23 +7,22 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/Theme';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { extendTheme } from "@chakra-ui/react"
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-const client = createClient({
-  url: 'http://localhost:4000/graphql'
-  ,
-  fetchOptions: {
-    credentials: 'include'
-  }
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_API_URL as string,
+  credentials: 'include',
+  cache: new InMemoryCache()
 });
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
   return (
-    <Provider value={client}>
+    <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
         <GlobalStyle />
       </ThemeProvider>
-    </Provider>
+    </ApolloProvider>
   )
 }
 export default MyApp;
