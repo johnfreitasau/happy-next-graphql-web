@@ -26,6 +26,8 @@ const DynamicMap = dynamic(() => import('../../components/MapEdit'), {ssr: false
 // export default function CreateOrphanages({}: CreateOrphanageProps) {
 const CreateOrphanages: React.FC = () => {
 const [checkboxValue, setCheckboxValue] = useState(false);
+const [latitude, setLatitude] = useState(0);
+const [longitude, setLongitude] = useState(0);
 
 const [orphanages] = useCreateOrphanageMutation();
 
@@ -33,6 +35,11 @@ const [orphanages] = useCreateOrphanageMutation();
     setCheckboxValue(!checkboxValue)
 
   }, []);
+
+  const handleSelectedLocation = useCallback((latitude, longitude) => {
+    setLatitude(latitude);
+    setLongitude(longitude);
+  },[])
 
   // const handleSubmit = useCallback(async (e) => {
   //   e.preventdefault();
@@ -79,6 +86,9 @@ const [orphanages] = useCreateOrphanageMutation();
             onSubmit={async (values) => {
                 const response = await orphanages({variables: {options: values}});
 
+                values.latitude = latitude;
+                values.longitude = longitude;
+
                 console.log('It is on onSubmit')
 
                 if(response.data?.createOrphanage) {
@@ -118,7 +128,8 @@ const [orphanages] = useCreateOrphanageMutation();
           <fieldset>
             <legend>Orphanage form</legend>
 
-            <DynamicMap latitude={-33.8645508} longitude={151.2059748} />
+
+            <DynamicMap latitude={-33.8645508} longitude={151.2059748} location={handleSelectedLocation} />
 
             {/* <Map
               center={[-4.3032032,-38.9981043]}

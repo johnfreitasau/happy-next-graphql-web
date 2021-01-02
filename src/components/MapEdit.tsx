@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import Leaflet, { LeafletMouseEvent } from 'leaflet';
-
+import Leaflet from 'leaflet';
 // import {LeafletContainerStyle} from '../styles/pages/components/map';
 import 'leaflet/dist/leaflet.css';
-import Link from 'next/link';
-import { FiArrowRight, FiPlus } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 
 interface mapProps {
   latitude: number;
@@ -18,62 +15,52 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29,68]
 })
 
-const MapEdit: React.FC<mapProps> = ({latitude, longitude}) => {
+const MapEdit: React.FC<mapProps> = ({latitude, longitude, children}) => {
 
-  const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
+  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([0,0]);
 
-  const handleMapClick = (event: LeafletMouseEvent): void => {
-    const { lat, lng } = event.latlng;
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+        const { latitude, longitude } = position.coords;
+        setInitialPosition([latitude, longitude]);
 
-    setPosition({
-      latitude: lat,
-      longitude: lng,
     });
-  };
+}, []);
+
+const Markers = () => {
+
+  const map = useMapEvents({
+      click(e) {
+          setSelectedPosition([
+              e.latlng.lat,
+              e.latlng.lng
+          ]);
+      },
+  })
+
+  return (
+      selectedPosition ?
+          <Marker
+          key={selectedPosition[0]}
+          position={selectedPosition}
+          interactive={false}
+          icon={mapIcon}
+          />
+      : null
+  )
+
+}
+
 
     return (
         <MapContainer
-          // center={[-33.71606747297306, 150.97515317055928]}
-          // zoom={31}
-          // style={{ width: '100%', height: 280 }}
-          center={[latitude, longitude]}
+          center={{ lat: 51.505, lng: -0.09 }}
           zoom={15}
           style={{ width: '100%', height: 280 }}
-          onClick={handleMapClick}
-
-
-          // dragging={true}
-          // touchZoom={false}
-          // zoomControl={false}
-          // scrollWheelZoom={false}
-          // doubleClickZoom={false}
         >
+          <Markers />
 
-          <Marker
-            interactive={false}
-            icon={mapIcon}
-            position={[latitude, longitude]}
-          />
-            {/* <Popup
-              closeButton={false}
-              minWidth={240}
-              maxWidth={240}
-              className="map-popup"
-            > */}
-
-              Lar das
-              <Link href="/orphanages/1" passHref>
-                <div>
-                  <FiArrowRight size={20} color="#fff"/>
-                </div>
-              </Link>
-
-
-            {/* </Popup> */}
-          {/* </Marker> */}
-
-
-          {/* Option 1 <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
           <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`}/>
         </MapContainer>
 
