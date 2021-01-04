@@ -1,8 +1,4 @@
 import { useRouter } from 'next/router'
-import { GetStaticPaths, GetStaticProps } from 'next'
-// import { Props } from 'react'
-// import Leaflet from 'leaflet';
-// import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 import {
   Container,
@@ -17,34 +13,17 @@ import dynamic from 'next/dynamic';
 import { useFindOrphanageByIdQuery, useOrphanagesQuery } from '../../generated/graphql'
 import { withApollo } from '../../utils/withApollo'
 
-interface OrphanageProps {
-  orphanage: string
-}
-
-
-// const mapIcon = Leaflet.icon({
-//   iconUrl: '/assets/map-marker.svg',
-//   iconSize: [58,68],
-//   iconAnchor: [29,68]
-// })
-
 const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
 
-//export default function Orphanage({ orphanage }: OrphanageProps) {
-function Orphanage({ orphanage }: OrphanageProps) {
+  function Orphanage() {
+
+  const router = useRouter();
 
   const {data, error, loading} = useFindOrphanageByIdQuery({
-    // skip: stringId === '-1',
     variables: {
-      id: 'ed793ce3-c62b-4415-8c93-d6e4c3e7bb06'
+      id: String(router.query.id),
     }
   });
-
-  console.log('data?.findOrphanageById:',data?.findOrphanageById);
-  console.log('data?.findOrphanageById?.name:',data?.findOrphanageById?.name);
-  console.log('Loading:',loading);
-
-  const router = useRouter()
 
   if (loading) {
     return <div>Loading...</div>
@@ -52,6 +31,12 @@ function Orphanage({ orphanage }: OrphanageProps) {
 
   if (error) {
     return <div>{error.message}</div>
+  }
+
+  if (!data?.findOrphanageById) {
+    return (
+      <div>Could not find the orphanage.</div>
+    )
   }
 
   return (
@@ -105,7 +90,6 @@ function Orphanage({ orphanage }: OrphanageProps) {
           </Images>
 
           <OrphanageContent>
-            {/* <div className="orphanage-details-content"> */}
             <h1>{data?.findOrphanageById?.name}</h1>
             <p>{data?.findOrphanageById?.about}</p>
 
@@ -146,40 +130,11 @@ function Orphanage({ orphanage }: OrphanageProps) {
               <FaWhatsapp size={20} color="#FFF" />
               Get in touch
             </button>
-            {/* </div> */}
-            {/* </div> */}
           </OrphanageContent>
         </div>
       </Content>
     </Container>
   )
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: true
-  }
-}
-
-export const getStaticProps: GetStaticProps<OrphanageProps> = async (
-  context
-) => {
-  if (context.params) {
-    const { slug } = context.params
-
-    console.log(slug)
-  }
-
-  const orphanage = 'Hello world'
-  // const orphanage = await client().getByUID('product', String(slug), {})
-
-  return {
-    props: {
-      orphanage
-    },
-    revalidate: 60
-  }
 }
 
 export default withApollo({ ssr: false })(Orphanage);

@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import GlobalStyle from '../styles/Global';
 import { ThemeProvider } from 'styled-components';
-import theme from '../styles/Theme';
+import theme from '../styles/theme';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { extendTheme } from "@chakra-ui/react"
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';

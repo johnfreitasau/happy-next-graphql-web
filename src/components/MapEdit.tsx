@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 
 interface mapProps {
+  label: string,
   location(latitude: number, longitude: number): any;
 }
 
@@ -13,19 +14,19 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29, 68],
 });
 
-const MapEdit: React.FC<mapProps> = ({ location }) => {
+const MapEdit: React.FC<mapProps> = ({ label, location }) => {
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
     0,
     0,
   ]);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
-    0,
-    0,
+    0,0
   ]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
+      console.log('position coords:',position.coords);
       setInitialPosition([latitude, longitude]);
     });
   }, []);
@@ -51,9 +52,9 @@ const MapEdit: React.FC<mapProps> = ({ location }) => {
 
   return (
     <>
-      <label htmlFor="Add the Orphanage location:">Select the Orphanage:</label>
+      <label htmlFor={label}>{label}</label>
       <MapContainer
-        center={{ lat: 51.505, lng: -0.09 }}
+        center={{ lat: -33.71606747297306, lng: 150.97515317055928 }}
         zoom={15}
         style={{ width: '100%', height: 280 }}
       >

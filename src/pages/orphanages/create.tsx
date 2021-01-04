@@ -42,35 +42,11 @@ const CreateOrphanages: React.FC = () => {
     setLongitude(longitude)
   }, [])
 
-  // const handleSubmit = useCallback(async (e) => {
-  //   e.preventdefault();
-
-  //   const response = await orphanages({options: e});
-  //   if(response.data?.createOrphanage) {
-  //     console.log(response.data.createOrphanage)
-  //     response.data.createOrphanage
-  //   }
-
-  //   console.log(`It's here`)
-
-  // },[])
-
-  //         onSubmit={async (values) => {
-  //           const response = await orphanages({options: values});
-
-  //           if(response.data?.createOrphanage) {
-  //             console.log(response.data.createOrphanage)
-  //             response.data.createOrphanage
-  //           }
-  //           console.log(values)}}
-
   return (
     <Container>
-      {/* <div id="page-create-orphanage"> */}
       <Sidebar />
 
       <Main>
-        {/* <main> */}
         <Formik
           initialValues={{
             name: '',
@@ -106,25 +82,24 @@ const CreateOrphanages: React.FC = () => {
           validationSchema={Yup.object().shape({
             name: Yup.string().min(3).max(50).required(),
             latitude: Yup.number()
-                .required().moreThan(0),
+                .required(),
             longitude: Yup.number()
-                .required().moreThan(0),
+                .required(),
             about: Yup.string().min(3).required(),
             instructions: Yup.string().min(3).required(),
             openingHours: Yup.string().min(3).required(),
             openOnWeekends: Yup.bool()
-              .oneOf([true], 'Open On Weekends is true if required')
-              .required()
-              .required()
           })}
         >
           <Form className="create-orphanage-form">
             <fieldset>
               <legend>Orphanage form</legend>
-
-              <DynamicMap
-                location={handleSelectedLocation}
-              />
+              <div className="input-block">
+                <DynamicMap
+                  label="Add the Orphanage position"
+                  location={handleSelectedLocation}
+                />
+              </div>
               <div className="input-block">
                 <Field name="name" label="Name" component={InputField} />
               </div>
@@ -192,17 +167,4 @@ const CreateOrphanages: React.FC = () => {
   )
 }
 
-export const getStaticProps: GetStaticProps<CreateOrphanageProps> = async () => {
-  //const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recommended`);
-
-  // const recommendedProducts = await client().query([
-  //   Prismic.Predicates.at('document.type','product')
-  // ])
-
-  return {
-    props: {}
-  }
-}
-
 export default withApollo({ ssr: false })(CreateOrphanages)
-//export default CreateOrphanages;
