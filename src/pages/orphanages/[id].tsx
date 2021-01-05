@@ -12,6 +12,7 @@ import { FiInfo, FiClock } from 'react-icons/fi'
 import dynamic from 'next/dynamic';
 import { useFindOrphanageByIdQuery, useOrphanagesQuery } from '../../generated/graphql'
 import { withApollo } from '../../utils/withApollo'
+import Link from 'next/link';
 
 const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
 
@@ -91,6 +92,12 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
 
           <OrphanageContent>
             <h1>{data?.findOrphanageById?.name}</h1>
+
+
+            <p>Email: {data?.findOrphanageById?.email}</p>
+
+            <p>Phone: {data?.findOrphanageById?.whatsapp}</p>
+
             <p>{data?.findOrphanageById?.about}</p>
 
             <div className="map-container">
@@ -126,10 +133,16 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
                 </div>
               )}
             </div>
-            <button type="button" className="contact-button">
-              <FaWhatsapp size={20} color="#FFF" />
-              Get in touch
-            </button>
+            <Link
+              href={`https://api.whatsapp.com/send/?phone=${data?.findOrphanageById?.whatsapp}&text=Hi+${data?.findOrphanageById?.name}+How+are+you+%3F&app_absent=0`}
+            >
+              <a target="_blank">
+                <div className="contact-button">
+                  <FaWhatsapp size={20} color="#FFF" />
+                  Get in touch
+                </div>
+              </a>
+            </Link>
           </OrphanageContent>
         </div>
       </Content>

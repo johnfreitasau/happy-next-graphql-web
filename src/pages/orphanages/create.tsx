@@ -50,6 +50,8 @@ const CreateOrphanages: React.FC = () => {
         <Formik
           initialValues={{
             name: '',
+            email: '',
+            whatsapp: '',
             latitude: 0,
             longitude: 0,
             about: '',
@@ -81,6 +83,8 @@ const CreateOrphanages: React.FC = () => {
           }}
           validationSchema={Yup.object().shape({
             name: Yup.string().min(3).max(50).required(),
+            email: Yup.string().email().max(50).required(),
+            whatsapp: Yup.string().min(8).required(),
             latitude: Yup.number()
                 .required(),
             longitude: Yup.number()
@@ -103,7 +107,12 @@ const CreateOrphanages: React.FC = () => {
               <div className="input-block">
                 <Field name="name" label="Name" component={InputField} />
               </div>
-
+              <div className="input-block">
+                <Field name="email" label="Email" component={InputField} />
+              </div>
+              <div className="input-block">
+                <Field name="whatsapp" label="WhatsApp" component={InputField} />
+              </div>
               <div className="input-block">
                 <Field
                   name="about"

@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
   min-height: 100vh;
-`
+`;
 
 export const Content = styled.div`
   flex: 1;
@@ -24,7 +24,7 @@ export const Content = styled.div`
       object-fit: cover;
     }
   }
-`
+`;
 
 export const Images = styled.div`
   display: grid;
@@ -52,7 +52,7 @@ export const Images = styled.div`
       object-fit: cover;
     }
   }
-`
+`;
 
 export const OrphanageContent = styled.div`
   padding: 80px;
@@ -138,31 +138,33 @@ export const OrphanageContent = styled.div`
     }
   }
 
-  button {
-    margin-top: 64px;
-    width: 100%;
-    height: 64px;
-    border: 0;
-    cursor: pointer;
-    background: #3cdc8c;
-    border-radius: 20px;
-    color: #ffffff;
-    font-weight: 800;
+  a {
+    text-decoration: none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .contact-button {
+      margin-top: 64px;
+      width: 100%;
+      height: 64px;
+      border: 0;
+      cursor: pointer;
+      background: #3cdc8c;
+      border-radius: 20px;
+      color: #ffffff;
+      font-weight: 800;
 
-    transition: background-color 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    &:svg {
-      margin-right: 16px;
-    }
+      transition: background-color 0.2s;
 
-    &:hover {
-      background: #36cf82;
+      svg {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        background: #36cf82;
+      }
     }
   }
-
-
-`
+`;
