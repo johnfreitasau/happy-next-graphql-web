@@ -17,9 +17,9 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  orphanages: Array<Orphanages>;
-  findOrphanageByName?: Maybe<Orphanages>;
-  findOrphanageById?: Maybe<Orphanages>;
+  orphanages: Array<Orphanage>;
+  findOrphanageByName?: Maybe<Orphanage>;
+  findOrphanageById?: Maybe<Orphanage>;
 };
 
 
@@ -32,10 +32,12 @@ export type QueryFindOrphanageByIdArgs = {
   id: Scalars['String'];
 };
 
-export type Orphanages = {
-  __typename?: 'Orphanages';
+export type Orphanage = {
+  __typename?: 'Orphanage';
   id: Scalars['String'];
   name: Scalars['String'];
+  email: Scalars['String'];
+  whatsapp: Scalars['String'];
   latitude: Scalars['Float'];
   longitude: Scalars['Float'];
   about: Scalars['String'];
@@ -49,7 +51,7 @@ export type Orphanages = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createOrphanage: Orphanages;
+  createOrphanage: Orphanage;
   updateOrphanage: Scalars['Boolean'];
   deleteOrphanage: Scalars['Boolean'];
 };
@@ -72,6 +74,8 @@ export type MutationDeleteOrphanageArgs = {
 
 export type OrphanageInsertInput = {
   name: Scalars['String'];
+  email: Scalars['String'];
+  whatsapp: Scalars['String'];
   latitude: Scalars['Float'];
   longitude: Scalars['Float'];
   about: Scalars['String'];
@@ -82,6 +86,8 @@ export type OrphanageInsertInput = {
 
 export type OrphanageUpdateInput = {
   name?: Maybe<Scalars['String']>;
+  email: Scalars['String'];
+  whatsapp: Scalars['String'];
   latitude?: Maybe<Scalars['Float']>;
   longitude?: Maybe<Scalars['Float']>;
   about?: Maybe<Scalars['String']>;
@@ -98,8 +104,8 @@ export type CreateOrphanageMutationVariables = Exact<{
 export type CreateOrphanageMutation = (
   { __typename?: 'Mutation' }
   & { createOrphanage: (
-    { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
+    { __typename?: 'Orphanage' }
+    & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   ) }
 );
 
@@ -109,8 +115,8 @@ export type OrphanagesQueryVariables = Exact<{ [key: string]: never; }>;
 export type OrphanagesQuery = (
   { __typename?: 'Query' }
   & { orphanages: Array<(
-    { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
+    { __typename?: 'Orphanage' }
+    & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
 );
 
@@ -122,8 +128,8 @@ export type FindOrphanageByIdQueryVariables = Exact<{
 export type FindOrphanageByIdQuery = (
   { __typename?: 'Query' }
   & { findOrphanageById?: Maybe<(
-    { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
+    { __typename?: 'Orphanage' }
+    & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
 );
 
@@ -135,8 +141,8 @@ export type FindOrphanageByNameQueryVariables = Exact<{
 export type FindOrphanageByNameQuery = (
   { __typename?: 'Query' }
   & { findOrphanageByName?: Maybe<(
-    { __typename?: 'Orphanages' }
-    & Pick<Orphanages, 'id' | 'name' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
+    { __typename?: 'Orphanage' }
+    & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
 );
 
@@ -146,6 +152,8 @@ export const CreateOrphanageDocument = gql`
   createOrphanage(options: $options) {
     id
     name
+    email
+    whatsapp
     latitude
     longitude
     about
@@ -185,6 +193,8 @@ export const OrphanagesDocument = gql`
   orphanages {
     id
     name
+    email
+    whatsapp
     latitude
     longitude
     about
@@ -224,6 +234,8 @@ export const FindOrphanageByIdDocument = gql`
   findOrphanageById(id: $id) {
     id
     name
+    email
+    whatsapp
     latitude
     longitude
     about
@@ -264,6 +276,8 @@ export const FindOrphanageByNameDocument = gql`
   findOrphanageByName(name: $name) {
     id
     name
+    email
+    whatsapp
     latitude
     longitude
     about
