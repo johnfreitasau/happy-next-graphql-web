@@ -10,52 +10,50 @@ export const Content = styled.div`
 
   > div {
     width: 700px;
-    margin: 64px auto;
+    margin: 30px auto;
 
     background: #ffffff;
     border: 1px solid #d3e2e5;
-    border-radius: 20px;
+    border-radius: 30px;
 
     overflow: hidden;
-
-    > img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-  }
-`;
-
-export const Images = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 16px;
-  margin: 16px 40px 0;
-
-  button {
-    border: 0;
-    height: 88px;
-    background: none;
-    cursor: pointer;
-    border-radius: 20px;
-    overflow: hidden;
-    outline: none;
-    opacity: 0.6;
-
-    &:active {
-      opacity: 1;
-    }
 
     img {
-      width: 100%;
-      height: 88px;
-      object-fit: cover;
+      height: 250px;
     }
   }
 `;
 
+// export const Images = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr);
+//   column-gap: 16px;
+//   margin: 16px 40px 0;
+
+//   button {
+//     border: 0;
+//     height: 88px;
+//     background: none;
+//     cursor: pointer;
+//     border-radius: 20px;
+//     overflow: hidden;
+//     outline: none;
+//     opacity: 0.6;
+
+//     &:active {
+//       opacity: 1;
+//     }
+
+//     img {
+//       width: 100%;
+//       height: 88px;
+//       object-fit: cover;
+//     }
+//   }
+// `;
+
 export const OrphanageContent = styled.div`
-  padding: 80px;
+  padding: 40px;
 
   h1 {
     color: #4d6f80;

@@ -122,15 +122,6 @@ const CreateOrphanages: React.FC = () => {
                   maxLength={300}
                 />
               </div>
-
-              <div className="input-block">
-                <label htmlFor="images">Photos</label>
-
-                <div className="uploaded-image"></div>
-                <button className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
-                </button>
-              </div>
             </fieldset>
 
             <fieldset>

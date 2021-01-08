@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import {
   Container,
   Content,
-  Images,
   OrphanageContent
 } from '../../styles/pages/orphanages/Orphanage'
 import Sidebar from '../../components/Sidebar'
@@ -13,6 +12,7 @@ import dynamic from 'next/dynamic';
 import { useFindOrphanageByIdQuery, useOrphanagesQuery } from '../../generated/graphql'
 import { withApollo } from '../../utils/withApollo'
 import Link from 'next/link';
+import Image from 'next/image';
 
 const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
 
@@ -46,50 +46,13 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
 
       <Content>
         <div>
-          <img
-            src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-            alt="Lar das meninas"
-          />
-
-          <Images>
-            <button className="active" type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
-                alt="Lar das meninas"
-              />
-            </button>
-          </Images>
-
+          <Image
+              src="/assets/help2.jpg"
+              alt="Logo"
+              objectFit={"cover"}
+              width={900}
+              height={200}
+            />
           <OrphanageContent>
             <h1>{data?.findOrphanageById?.name}</h1>
 
