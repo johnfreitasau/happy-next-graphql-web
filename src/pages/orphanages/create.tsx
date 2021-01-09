@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
-import { GetServerSideProps, GetStaticProps } from 'next'
+import React, { useCallback, useState } from 'react'
 import Sidebar from '../../components/Sidebar'
-import { FiPlus } from 'react-icons/fi'
 import { Container, Main } from '../../styles/pages/orphanages/CreateOrphanage'
 import dynamic from 'next/dynamic'
 import { Formik, Form, Field } from 'formik'
@@ -17,16 +14,12 @@ const preventDefault = (f: any) => (e: any) => {
   f(e)
 }
 
-interface CreateOrphanageProps {
-  // create: Document[];
-}
-
 const DynamicMap = dynamic(() => import('../../components/MapEdit'), {
   ssr: false
 })
 
-// export default function CreateOrphanages({}: CreateOrphanageProps) {
-const CreateOrphanages: React.FC = () => {
+ function CreateOrphanages() {
+// const CreateOrphanages: React.FC = () => {
   const [checkboxValue, setCheckboxValue] = useState(false)
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
@@ -63,21 +56,18 @@ const CreateOrphanages: React.FC = () => {
             values.latitude = latitude
             values.longitude = longitude
 
-            const response = await orphanages({
+            // const response = await orphanages({
+            //   variables: { options: values }
+            // })
+
+            // if (response.data?.createOrphanage) {
+            //   response.data.createOrphanage
+            // }
+            // history.back()
+
+            orphanages({
               variables: { options: values }
             })
-
-            console.log('It is on onSubmit')
-
-            if (response.data?.createOrphanage) {
-              console.log(
-                'createOrphanage response:',
-                response.data.createOrphanage
-              )
-              console.log('checkboxValue', checkboxValue)
-              response.data.createOrphanage
-            }
-            console.log('values:', values)
 
             history.back()
           }}

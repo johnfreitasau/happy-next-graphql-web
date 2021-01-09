@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
-// import {LeafletContainerStyle} from '../styles/pages/components/map';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
 import { useOrphanagesQuery } from '../generated/graphql';
 import { withApollo } from '../utils/withApollo';
-
-interface mapProps {
-
-}
-
-interface orphanagesProps {
-
-}
 
 const mapIcon = Leaflet.icon({
   iconUrl: '/assets/map-marker.svg',
@@ -23,17 +14,18 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29,68]
 })
 
-const Map: React.FC<mapProps> = ({}) => {
+const Map: React.FC = ({}) => {
+
+    const [currentPosition, setCurrentPosition] = useState<[number, number]>([
+      -33.71606747297306, 150.97515317055928
+    ]);
 
     const orphanages = useOrphanagesQuery();
 
-
-
     return (
 
-
         <MapContainer
-          center={[-33.71606747297306, 150.97515317055928]}
+          center={currentPosition}
           zoom={31}
           style={{ width: '100%', height: '100%' }}
         >
@@ -71,4 +63,3 @@ const Map: React.FC<mapProps> = ({}) => {
 }
 
 export default withApollo({ ssr: true })(Map);
-//export default Map;

@@ -1,43 +1,52 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 import {
   Container,
   Content,
-  OrphanageContent
-} from '../../styles/pages/orphanages/Orphanage'
-import Sidebar from '../../components/Sidebar'
-import { FaWhatsapp } from 'react-icons/fa'
-import { FiInfo, FiClock } from 'react-icons/fi'
+  OrphanageContent,
+} from '../../styles/pages/orphanages/Orphanage';
+import Sidebar from '../../components/Sidebar';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FiInfo, FiClock } from 'react-icons/fi';
 import dynamic from 'next/dynamic';
-import { useFindOrphanageByIdQuery, useOrphanagesQuery } from '../../generated/graphql'
-import { withApollo } from '../../utils/withApollo'
+import {
+  FindOrphanageByIdQuery,
+  useFindOrphanageByIdQuery,
+  useOrphanagesQuery,
+} from '../../generated/graphql';
+import { withApollo } from '../../utils/withApollo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
-const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: false})
+const DynamicMap = dynamic(() => import('../../components/MapPreview'), {
+  ssr: false,
+});
 
-  function Orphanage() {
+function Orphanage() {
+
+  const [orphanage, setOrphanage] = useState<FindOrphanageByIdQuery | undefined>();
 
   const router = useRouter();
 
-  const {data, error, loading} = useFindOrphanageByIdQuery({
+  const { data, error, loading } = useFindOrphanageByIdQuery({
     variables: {
       id: String(router.query.id),
-    }
+    },
   });
 
+  // setOrphanage(data);
+
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error.message}</div>
+    return <div>{error.message}</div>;
   }
 
   if (!data?.findOrphanageById) {
-    return (
-      <div>Could not find the orphanage.</div>
-    )
+    return <div>Could not find the orphanage.</div>;
   }
 
   return (
@@ -47,15 +56,14 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
       <Content>
         <div>
           <Image
-              src="/assets/help2.jpg"
-              alt="Logo"
-              objectFit={"cover"}
-              width={900}
-              height={200}
-            />
+            src="/assets/help.jpg"
+            alt="Logo"
+            objectFit={'cover'}
+            width={900}
+            height={200}
+          />
           <OrphanageContent>
             <h1>{data?.findOrphanageById?.name}</h1>
-
 
             <p>Email: {data?.findOrphanageById?.email}</p>
 
@@ -64,7 +72,7 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
             <p>{data?.findOrphanageById?.about}</p>
 
             <div className="map-container">
-              <DynamicMap />
+              <DynamicMap location={{latitude: data?.findOrphanageById?.latitude, longitude: data?.findOrphanageById?.longitude}} />
               <footer>
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&destination=${data?.findOrphanageById?.latitude},${data?.findOrphanageById?.longitude}`}
@@ -110,7 +118,7 @@ const DynamicMap = dynamic(() => import('../../components/MapPreview'), {ssr: fa
         </div>
       </Content>
     </Container>
-  )
+  );
 }
 
 export default withApollo({ ssr: false })(Orphanage);

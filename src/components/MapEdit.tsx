@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 
-interface mapProps {
+interface MapProps {
   label: string,
   location(latitude: number, longitude: number): any;
 }
@@ -14,7 +14,7 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [29, 68],
 });
 
-const MapEdit: React.FC<mapProps> = ({ label, location }) => {
+const MapEdit: React.FC<MapProps> = ({ label, location }) => {
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
     0,
     0,
@@ -26,7 +26,6 @@ const MapEdit: React.FC<mapProps> = ({ label, location }) => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      console.log('position coords:',position.coords);
       setInitialPosition([latitude, longitude]);
     });
   }, []);

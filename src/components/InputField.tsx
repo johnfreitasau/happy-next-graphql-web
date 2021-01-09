@@ -23,10 +23,6 @@ export const InputField: React.FC<FieldProps & InputProps> = ({
     ...props
 }) => {
 
-  // console.log('label:',label)
-  // console.log('textarea:',textarea)
-  // console.log('field:',field)
-
     const errorMessage = touched[field.name] && errors[field.name];
     return (
         <>

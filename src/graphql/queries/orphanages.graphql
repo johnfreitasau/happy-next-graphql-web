@@ -28,17 +28,18 @@ query findOrphanageById($id: String!) {
   }
 }
 
-query findOrphanageByName($name: String!) {
-  findOrphanageByName(name: $name) {
-    id,
-    name,
-    email,
-    whatsapp,
-    latitude,
-    longitude,
-    about,
-    instructions,
-    openingHours,
-    openOnWeekends
-  }
-}
+# Fase 2
+# query findOrphanageByName($name: String!) {
+#   findOrphanageByName(name: $name) {
+#     id,
+#     name,
+#     email,
+#     whatsapp,
+#     latitude,
+#     longitude,
+#     about,
+#     instructions,
+#     openingHours,
+#     openOnWeekends
+#   }
+# }

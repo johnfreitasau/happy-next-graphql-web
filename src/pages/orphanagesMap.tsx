@@ -46,5 +46,3 @@ function OrphanagesMap() {
 
 // export default OrphanagesMap;
 export default withApollo({ ssr: true })(OrphanagesMap);
-
-

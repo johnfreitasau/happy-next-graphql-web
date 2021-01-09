@@ -18,13 +18,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   orphanages: Array<Orphanage>;
-  findOrphanageByName?: Maybe<Orphanage>;
   findOrphanageById?: Maybe<Orphanage>;
-};
-
-
-export type QueryFindOrphanageByNameArgs = {
-  name: Scalars['String'];
 };
 
 
@@ -52,24 +46,11 @@ export type Orphanage = {
 export type Mutation = {
   __typename?: 'Mutation';
   createOrphanage: Orphanage;
-  updateOrphanage: Scalars['Boolean'];
-  deleteOrphanage: Scalars['Boolean'];
 };
 
 
 export type MutationCreateOrphanageArgs = {
   options: OrphanageInsertInput;
-};
-
-
-export type MutationUpdateOrphanageArgs = {
-  options: OrphanageUpdateInput;
-  id: Scalars['String'];
-};
-
-
-export type MutationDeleteOrphanageArgs = {
-  id: Scalars['String'];
 };
 
 export type OrphanageInsertInput = {
@@ -82,18 +63,6 @@ export type OrphanageInsertInput = {
   instructions: Scalars['String'];
   openingHours: Scalars['String'];
   openOnWeekends: Scalars['Boolean'];
-};
-
-export type OrphanageUpdateInput = {
-  name?: Maybe<Scalars['String']>;
-  email: Scalars['String'];
-  whatsapp: Scalars['String'];
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  about?: Maybe<Scalars['String']>;
-  instructions?: Maybe<Scalars['String']>;
-  openingHours?: Maybe<Scalars['String']>;
-  openOnWeekends?: Maybe<Scalars['Boolean']>;
 };
 
 export type CreateOrphanageMutationVariables = Exact<{
@@ -128,19 +97,6 @@ export type FindOrphanageByIdQueryVariables = Exact<{
 export type FindOrphanageByIdQuery = (
   { __typename?: 'Query' }
   & { findOrphanageById?: Maybe<(
-    { __typename?: 'Orphanage' }
-    & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
-  )> }
-);
-
-export type FindOrphanageByNameQueryVariables = Exact<{
-  name: Scalars['String'];
-}>;
-
-
-export type FindOrphanageByNameQuery = (
-  { __typename?: 'Query' }
-  & { findOrphanageByName?: Maybe<(
     { __typename?: 'Orphanage' }
     & Pick<Orphanage, 'id' | 'name' | 'email' | 'whatsapp' | 'latitude' | 'longitude' | 'about' | 'instructions' | 'openingHours' | 'openOnWeekends'>
   )> }
@@ -271,45 +227,3 @@ export function useFindOrphanageByIdLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type FindOrphanageByIdQueryHookResult = ReturnType<typeof useFindOrphanageByIdQuery>;
 export type FindOrphanageByIdLazyQueryHookResult = ReturnType<typeof useFindOrphanageByIdLazyQuery>;
 export type FindOrphanageByIdQueryResult = Apollo.QueryResult<FindOrphanageByIdQuery, FindOrphanageByIdQueryVariables>;
-export const FindOrphanageByNameDocument = gql`
-    query findOrphanageByName($name: String!) {
-  findOrphanageByName(name: $name) {
-    id
-    name
-    email
-    whatsapp
-    latitude
-    longitude
-    about
-    instructions
-    openingHours
-    openOnWeekends
-  }
-}
-    `;
-
-/**
- * __useFindOrphanageByNameQuery__
- *
- * To run a query within a React component, call `useFindOrphanageByNameQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOrphanageByNameQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindOrphanageByNameQuery({
- *   variables: {
- *      name: // value for 'name'
- *   },
- * });
- */
-export function useFindOrphanageByNameQuery(baseOptions: Apollo.QueryHookOptions<FindOrphanageByNameQuery, FindOrphanageByNameQueryVariables>) {
-        return Apollo.useQuery<FindOrphanageByNameQuery, FindOrphanageByNameQueryVariables>(FindOrphanageByNameDocument, baseOptions);
-      }
-export function useFindOrphanageByNameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindOrphanageByNameQuery, FindOrphanageByNameQueryVariables>) {
-          return Apollo.useLazyQuery<FindOrphanageByNameQuery, FindOrphanageByNameQueryVariables>(FindOrphanageByNameDocument, baseOptions);
-        }
-export type FindOrphanageByNameQueryHookResult = ReturnType<typeof useFindOrphanageByNameQuery>;
-export type FindOrphanageByNameLazyQueryHookResult = ReturnType<typeof useFindOrphanageByNameLazyQuery>;
-export type FindOrphanageByNameQueryResult = Apollo.QueryResult<FindOrphanageByNameQuery, FindOrphanageByNameQueryVariables>;

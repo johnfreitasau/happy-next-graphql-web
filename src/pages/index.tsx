@@ -2,8 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import {FiArrowRight} from 'react-icons/fi';
 import Image from 'next/image';
-// import Logo from '../assets/logo.svg';
-//import { withApollo } from "../utils/withApollo";
 
 import {Container, ContainerWrapper, Location, Link} from '../styles/pages/Landing';
 import { withApollo } from '../utils/withApollo';
@@ -22,13 +20,6 @@ const Home: React.FC = () => {
               quality={100}
             />
           </div>
-                            {/* <Image
-            src="/assets/landing.svg"
-            alt="Kids Background"
-            objectFit="cover"
-            layout="fill"
-            quality={100}
-          /> */}
         <ContainerWrapper>
           <Head>
             <title>Happy</title>
@@ -58,5 +49,4 @@ const Home: React.FC = () => {
   )
 }
 
-// export default Home;
 export default withApollo({ ssr: false })(Home);
