@@ -10,14 +10,13 @@
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/johnfreitasau/happy-web?color=%2329B6D1">
   <a href="https://www.linkedin.com/in/johnfreitasau/"><img alt="Made by" src="https://img.shields.io/badge/made%20by-John%20Freitas-%2329B6D1"></a>
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/johnfreitasau/happy-web?color=%2329B6D1">
-  <a href="https://github.com/johnfreitasau/happy-web/commits/master"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/johnfreitasau/happy-web?color=%2329B6D1"></a>
+  <a href="https://github.com/johnfreitasau/happy-web/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/johnfreitasau/happy-web?color=%2329B6D1"></a>
   <a href="https://github.com/johnfreitasau/happy-web/issues"><img alt="Repository issues" src="https://img.shields.io/github/issues/johnfreitasau/happy-web?color=%2329B6D1"></a>
   <img alt="GitHub" src="https://img.shields.io/github/license/johnfreitasau/happy-web?color=%2329B6D1">
 </p>
 
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#construction_worker-installation">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#runner-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -101,7 +100,7 @@ Run the following command in order to start the application in a development env
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [Happy](https://github.com/johnfreitasau/happy-web/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/johnfreitasau/happy-web/blob/master/CONTRIBUTING.md) to find out about the coding standards.
+Feel free to **file a new issue** with a respective title and description on the the [Happy](https://github.com/johnfreitasau/happy-web/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/johnfreitasau/happy-web/blob/main/CONTRIBUTING.md) to find out about the coding standards.
 
 # :tada: Contributing
 
