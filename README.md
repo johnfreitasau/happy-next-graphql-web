@@ -40,6 +40,7 @@
 - [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Formik](https://formik.org/)
 - [Leaflet](https://leafletjs.com/)
+- [Mapbox API](https://www.mapbox.com/)
 - [React Icons](https://react-icons.netlify.com/#/)
 - [Styled Components](https://styled-components.com/)
 - [Yup](https://github.com/jquense/yup)
@@ -64,6 +65,10 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 ```git clone git@github.com:johnfreitasau/happy-web.git```
 
+**Mapbox API**
+
+To be able to access the Mapbox API, you'll need to register on their website (https://account.mapbox.com/) and get a Mapbox access token. Mapbox uses access tokens to associate API requests with your account. You can find your access tokens on your Access Tokens page (https://account.mapbox.com/).
+
 
 **Install dependencies**
 
@@ -71,7 +76,7 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 Create your enviroment variables based on the examples of ```.env.example```
 
-```cp .env.example .env```
+```cp .env.example.local .env.local```
 
 After copying the examples, make sure to fill the variables with new values.
 
