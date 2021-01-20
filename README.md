@@ -13,7 +13,7 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/johnfreitasau/happy-web?color=%2329B6D1">
   <a href="https://github.com/johnfreitasau/happy-web/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/johnfreitasau/happy-web?color=%2329B6D1"></a>
   <a href="https://github.com/johnfreitasau/happy-web/issues"><img alt="Repository issues" src="https://img.shields.io/github/issues/johnfreitasau/happy-web?color=%2329B6D1"></a>
-  <img alt="GitHub" src="https://img.shields.io/github/license/johnfreitasau/happy-web?color=%2329B6D1">
+  <img alt="GitHub" src="https://img.shields.io/github/license/johnfreitasau/happy-web?color=%2329B6D2">
 </p>
 
 <p align="center">
