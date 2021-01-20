@@ -5,6 +5,7 @@
 <h3 align="center">
   Happy - Spread happiness Into The World.
 </h3>
+<h4 align="center">Next.js | Graphql | Apollo Client | TypeScript | Styled Components</h4>
 <!-- E02041 -->
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/johnfreitasau/happy-web?color=%2329B6D1">
@@ -48,11 +49,9 @@
 
 # :rocket: Features
 
-* List Orphanages on Map
-*
-* Register new Orphanage
-
-* Orphanage Details
+* List Orphanages on the Map
+* Register a new Orphanage
+* See Orphanage Details
 
 
 # :construction_worker: Installation
