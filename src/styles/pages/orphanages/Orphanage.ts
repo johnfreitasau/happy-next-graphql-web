@@ -24,34 +24,6 @@ export const Content = styled.div`
   }
 `;
 
-// export const Images = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(6, 1fr);
-//   column-gap: 16px;
-//   margin: 16px 40px 0;
-
-//   button {
-//     border: 0;
-//     height: 88px;
-//     background: none;
-//     cursor: pointer;
-//     border-radius: 20px;
-//     overflow: hidden;
-//     outline: none;
-//     opacity: 0.6;
-
-//     &:active {
-//       opacity: 1;
-//     }
-
-//     img {
-//       width: 100%;
-//       height: 88px;
-//       object-fit: cover;
-//     }
-//   }
-// `;
-
 export const OrphanageContent = styled.div`
   padding: 40px;
 

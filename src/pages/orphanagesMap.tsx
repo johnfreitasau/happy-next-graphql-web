@@ -1,13 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import {FiPlus}from 'react-icons/fi';
-import {MapContainer, TileLayer, Marker} from 'react-leaflet';
 import dynamic from 'next/dynamic';
 import Image from 'next/image'
 
 import {Container,StyledLink} from '../styles/pages/OrphanagesMap';
 import { withApollo } from '../utils/withApollo';
-//import {Map} from '../components/map';
 
 
 
@@ -44,5 +42,4 @@ function OrphanagesMap() {
     </Container>
   )};
 
-// export default OrphanagesMap;
 export default withApollo({ ssr: true })(OrphanagesMap);

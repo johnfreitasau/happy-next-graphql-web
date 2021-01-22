@@ -48,22 +48,4 @@ export const SwitchContainer = styled.div`
   label:active span {
     width: 60px;
   }
-
-  /* label:active {
-    width: 60px;
-  } */
-
 `;
-
-
-
-
-
-// .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
-//   left: calc(100% - 2px);
-//   transform: translateX(-100%);
-// }
-
-// .react-switch-label:active .react-switch-button {
-//   width: 60px;
-// }

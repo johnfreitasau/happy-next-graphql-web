@@ -20,7 +20,13 @@ const Map: React.FC = ({}) => {
       -33.71606747297306, 150.97515317055928
     ]);
 
-    const orphanages = useOrphanagesQuery();
+    const orphanages = useOrphanagesQuery(
+      {
+        fetchPolicy: "cache-and-network",
+        nextFetchPolicy: 'cache-and-network',
+        notifyOnNetworkStatusChange: true,
+      }
+    );
 
     return (
 
@@ -44,6 +50,7 @@ const Map: React.FC = ({}) => {
               >
 
                 {orphanage.name}
+
                 <Link href={`/orphanages/${orphanage.id}`} passHref>
                   <div>
                     <FiArrowRight size={20} color="#fff"/>

@@ -16,11 +16,6 @@ export const Main = styled.main`
     padding: 64px 80px;
     overflow: hidden;
 
-    /* .leaflet-container {
-      margin-bottom: 40px;
-      border: 1px solid #d3e2e5;
-      border-radius: 20px;
-    } */
     .map-container {
     margin-top: 64px;
     background: #e6f7fb;
