@@ -32,9 +32,9 @@
 </p>
 
 
-To see the Mobile repository, [click here](https://github.com/johnfreitasau/happy-mobile)
+To see the Mobile repository, [click here](https://github.com/johnfreitasau/happy-mobile).
 
-To see the API repository, [click here](https://github.com/johnfreitasau/happy-api)
+To see the API repository, [click here](https://github.com/johnfreitasau/happy-api).
 
 
 # :rocket: Technologies
