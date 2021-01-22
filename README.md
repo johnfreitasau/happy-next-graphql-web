@@ -1,5 +1,5 @@
 <h1 align="center">
-  HAPPY - Web
+  <img src=".github/images/logo.png" alt="Happy">
 </h1>
 
 <h3 align="center">
@@ -26,6 +26,15 @@
   <a href="#tada-contributing">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#closed_book-license">License</a>
 </p>
+
+<p align="center">
+   <img src="./.github/images/happy_web_demo1.gif" width="500"/>
+</p>
+
+
+To see the Mobile repository, [click here](https://github.com/johnfreitasau/happy-mobile)
+
+To see the API repository, [click here](https://github.com/johnfreitasau/happy-api)
 
 
 # :rocket: Technologies
